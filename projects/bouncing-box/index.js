@@ -29,28 +29,55 @@
     //////////////////////////////////////////////////////////////////
     /////////////////// YOUR CODE BELOW HERE /////////////////////////
     //////////////////////////////////////////////////////////////////
+    function moveBoxToTwo(newPositionY){
+        box.css('top', newPositionY);
+    }
+    setInterval(updateAgain, 50);
     
     // TODO 2 - Variable declarations 
-    
-
+    var positionX = 0;
+    var points = 0;
+    var speed = 10;
+    var positionY = 0;
+    var direction = 10;
+    var boardHeight = jQuery(window).height();
+    var ranNum = Math.random(0, boardWidhth) * 100;
     
     /* 
     This Function will be called 20 times/second. Each time it is called,
     it should move the Box to a new location. If the box drifts off the screen
     turn it around! 
     */
-    function update() {
-        
-
-    };
-
+   function update() {
+        positionX = positionX + speed;
+        moveBoxTo(positionX);
+        if (positionX > boardWidth){
+            speed = -speed;
+        }
+        else if (positionX < 0){
+            speed = speed * -1;
+        }
+        }
+    function updateAgain() {
+        positionY = positionY + direction;
+        moveBoxToTwo(positionY);
+        if (positionY > boardHeight){
+            direction = -direction;
+        }
+        else if (positionY < 0){
+            direction = direction * -1;
+        }
+    }
     /* 
     This Function will be called each time the box is clicked. Each time it is called,
     it should increase the points total, increase the speed, and move the box to
     the left side of the screen.
     */
     function handleBoxClick() {
-        
+        positionX = 0;
+        points = points + 1;
+        changeBoxText(points);
+        speed = speed + 3;
 
 
     };
